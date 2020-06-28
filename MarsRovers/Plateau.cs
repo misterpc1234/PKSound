@@ -9,7 +9,7 @@ namespace MarsRovers
     // Once the grid coordinates are set, it should remain constant
     // so that an illegal move by a Rover can be detected 
     
-    public sealed class Grid
+    public sealed class Plateau
     {
         // The grid coordinates are taken from the first line
         // of the input received.  The lower right and left
@@ -19,7 +19,7 @@ namespace MarsRovers
         public const int lower_x = 0;
         public const int lower_y = 0;
 
-        public Grid(int top_x, int top_y)
+        public Plateau(int top_x, int top_y)
         {
             upper_x = top_x;
             upper_y = top_y;

@@ -6,23 +6,27 @@ using System.Threading.Tasks;
 
 namespace MarsRovers
 {
-    public class Rover : IGetInitialPosition
+    public class Rover : IGetInitialPosition, ISetRoverName, IGetInstructions
     {
         public string name;
-        public string number;
         public string initialPosition;
+        public string instructions;
+
         public enum orientation { N, E, W, S}
 
-
-        public Rover(string r_name, string r_number)
+        public void SetRoverName(string roverName)
         {
-            name = r_name;
-            number = r_number;
+            name = roverName;
         }
 
         public void GetInitialPosition(string input)
         {
             initialPosition = input;
+        }
+
+        public void GetInstructions(string receivedInstuctions)
+        {
+            instructions = receivedInstuctions;
         }
     }
 }

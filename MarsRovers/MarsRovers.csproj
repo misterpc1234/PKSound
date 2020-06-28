@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grid.cs" />
+    <Compile Include="IErrorChecking.cs" />
+    <Compile Include="IGetInstructions.cs" />
+    <Compile Include="ISetRoverName.cs" />
+    <Compile Include="Plateau.cs" />
     <Compile Include="IGetInitialPosition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
