@@ -10,6 +10,11 @@ namespace MarsRovers
     {
         static void Main(string[] args)
         {
+            string input;
+            
+            // Get input from console
+            Console.WriteLine("Test Input: ");
+            input = Console.ReadLine();
         }
     }
 }
