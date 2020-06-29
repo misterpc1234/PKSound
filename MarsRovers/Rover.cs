@@ -60,21 +60,21 @@ namespace MarsRovers
             return position;
         }
 
-        // If the rover is facing north and advance is called increment the x coodinate
-        // If the rover is facing south and advance is called decrement the x coodinate
+        // If the rover is facing east and advance is called increment the x coodinate
+        // If the rover is facing west and advance is called decrement the x coodinate
         public string AdvanceX()
         {
             int x;
             List<string> pos = position.Split(' ').ToList();
             string tmp;
 
-            if ( (tmp = pos.ElementAt(2)) == "N")
+            if ( (tmp = pos.ElementAt(2)) == "E")
             {
                 x = Int32.Parse(pos[0]);
                 x++;
                 pos[0] = x.ToString();
             }
-            if ((tmp = pos.ElementAt(2)) == "S")
+            if ((tmp = pos.ElementAt(2)) == "W")
             {
                 x = Int32.Parse(pos[0]);
                 x--;
@@ -97,13 +97,13 @@ namespace MarsRovers
             List<string> pos = position.Split(' ').ToList();
             string tmp;
 
-            if ((tmp = pos.ElementAt(2)) == "E")
+            if ((tmp = pos.ElementAt(2)) == "N")
             {
                 y = Int32.Parse(pos[1]);
                 y++;
                 pos[1] = y.ToString();
             }
-            if ((tmp = pos.ElementAt(2)) == "W")
+            if ((tmp = pos.ElementAt(2)) == "S")
             {
                 y = Int32.Parse(pos[1]);
                 y--;

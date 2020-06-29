@@ -27,6 +27,9 @@ namespace MarsRovers
 
             // Move first rover to new position
             advanceRover(rovers[0]);
+
+            // Move second rover to new position
+            advanceRover(rovers[1]);
         }
 
         private static void advanceRover(Rover rover)
@@ -59,17 +62,19 @@ namespace MarsRovers
                 {
                     if (orientation[2] == "N" || orientation[2] == "S")
                     {
-                        rover.AdvanceX();
+                        rover.AdvanceY();
                         orientation = UpdateRover(rover);
                     }
                     
                     if (orientation[2] == "W" || orientation[2] == "E")
                     {
-                        rover.AdvanceY();
+                        rover.AdvanceX();
                         orientation = UpdateRover(rover); 
                     }
                 }
             }
+            // Write new position to console
+            Console.WriteLine("New position of rover is: {0} {1} {2}", orientation[0], orientation[1], orientation[2]);
         }
 
         private static string[] UpdateRover(Rover rover)
