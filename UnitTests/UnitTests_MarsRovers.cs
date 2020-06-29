@@ -90,10 +90,10 @@ namespace UnitTests
 
             // Act  
             rover.position = position;
-            rover.AdvanceX();
+            rover.AdvanceY();
 
             // Assert
-            Assert.AreEqual("3 3 N", rover.position);
+            Assert.AreEqual("2 4 N", rover.position);
 
         }
 
@@ -107,10 +107,10 @@ namespace UnitTests
 
             // Act  
             rover.position = position;
-            rover.AdvanceX();
+            rover.AdvanceY();
 
             // Assert
-            Assert.AreEqual("1 3 S", rover.position);
+            Assert.AreEqual("2 2 S", rover.position);
         }
 
         // Test that an advance east will increase y value by one
@@ -123,10 +123,10 @@ namespace UnitTests
 
             // Act  
             rover.position = position;
-            rover.AdvanceY();
+            rover.AdvanceX();
 
             // Assert
-            Assert.AreEqual("2 4 E", rover.position);
+            Assert.AreEqual("3 3 E", rover.position);
         }
 
         // Test that an advance east will increase y value by one
@@ -139,10 +139,10 @@ namespace UnitTests
 
             // Act  
             rover.position = position;
-            rover.AdvanceY();
+            rover.AdvanceX();
 
             // Assert
-            Assert.AreEqual("2 2 W", rover.position);
+            Assert.AreEqual("1 3 W", rover.position);
         }
     }
 }
