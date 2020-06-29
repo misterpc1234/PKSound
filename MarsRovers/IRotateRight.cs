@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MarsRovers
 {
-    interface IGetInitialPosition
+    interface IRotateRight
     {
-        void GetInitialPosition(string input);    
+        string rotateRight(string right);
     }
 }
