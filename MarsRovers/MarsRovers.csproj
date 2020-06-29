@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdvance.cs" />
-    <Compile Include="IErrorChecking.cs" />
     <Compile Include="IGetInstructions.cs" />
     <Compile Include="IRotateLeft.cs" />
     <Compile Include="IRotateRight.cs" />

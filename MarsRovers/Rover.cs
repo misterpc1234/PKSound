@@ -12,8 +12,6 @@ namespace MarsRovers
         public string position;
         public string instructions;
 
-        public enum orientation { N, E, W, S}
-
         public void SetRoverName(string roverName)
         {
             name = roverName;

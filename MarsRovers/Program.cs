@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsRovers
 {
-    class Program : IErrorChecking
+    class Program 
     {
         static void Main(string[] args)
         {
@@ -20,6 +20,66 @@ namespace MarsRovers
             boundary = getBoundary();
 
             // Create plateau
+            createPlateau(boundary); 
+           
+            // Get current position and instructions for each rover 
+            rovers = GetInput(out currentPosition, out instructions);
+
+            // Move first rover to new position
+            advanceRover(rovers[0]);
+        }
+
+        private static void advanceRover(Rover rover)
+        {
+            string[] orientation = rover.position.Split(' ');
+            char[] newInstructions = rover.instructions.ToCharArray();
+
+            for(int i = 0; i < newInstructions.Length; i++)
+            {
+                // if instruction is 'L' to rotate counter clockwise'
+                // call method to rotate left and update position
+                if (newInstructions[i] == 'L')
+                {
+                    rover.rotateLeft(orientation[2]);
+                    orientation = UpdateRover(rover);
+                }
+
+                // if instruction is 'R' to rotate counter clockwise'
+                // call method to rotate left and update position
+                if (newInstructions[i] == 'R')
+                {
+                    rover.rotateRight(orientation[2]);
+                    orientation = UpdateRover(rover);
+                }
+
+                // if instruction is 'M' to move one step then
+                // find what the current orientation is and choose
+                // the approporiate advanced move
+                if (newInstructions[i] == 'M')
+                {
+                    if (orientation[2] == "N" || orientation[2] == "S")
+                    {
+                        rover.AdvanceX();
+                        orientation = UpdateRover(rover);
+                    }
+                    
+                    if (orientation[2] == "W" || orientation[2] == "E")
+                    {
+                        rover.AdvanceY();
+                        orientation = UpdateRover(rover); 
+                    }
+                }
+            }
+        }
+
+        private static string[] UpdateRover(Rover rover)
+        {
+            string[] updatedInstructions = rover.position.Split(' ');
+            return updatedInstructions;
+        }
+
+        private static void createPlateau(string[] boundary)
+        {
             try
             {
                 Plateau plateau = new Plateau(Int32.Parse(boundary[0]), Int32.Parse(boundary[1]));
@@ -32,20 +92,18 @@ namespace MarsRovers
                 if (ret == "y")
                     return;
             }
-            catch(FormatException f)
+            catch (FormatException f)
             {
                 Console.WriteLine(f.Message + " Hit 'y' to exit");
                 string ret = Console.ReadLine();
-                if(ret == "y")
+                if (ret == "y")
                     return;
-            }          
-
-            // Get current position and instructions for each rover 
-            GetInput(out currentPosition, out instructions, rovers);
+            }
         }
 
-        private static void GetInput(out string currentPosition, out string instructions, List<Rover> rovers)
+        private static List<Rover> GetInput(out string currentPosition, out string instructions)
         {
+            List<Rover> rovers = new List<Rover>();
             currentPosition = null;
             instructions = null;
 
@@ -65,7 +123,7 @@ namespace MarsRovers
                 // Create name rover objects, giving the number as they were created
                 // i.e. MR1, MR2....
                 Rover rover = new Rover();
-                if (currentPosition.Length == 0)
+                if (currentPosition.Length != 0)
                 {
                     rover.SetRoverName("MR" + i.ToString());
                     rover.SetInitialPosition(currentPosition);
@@ -75,6 +133,7 @@ namespace MarsRovers
                     rovers.Add(rover);
                 }              
             }
+            return rovers;
         }
 
         private static string[] getBoundary()
@@ -83,6 +142,7 @@ namespace MarsRovers
             // Get plateau maximum size coordinates
             Console.WriteLine("Enter x and y coordinates of upper boundary in format x <space> y");
             boundary = Console.ReadLine().Split();
+
             return boundary;
         }
     }
