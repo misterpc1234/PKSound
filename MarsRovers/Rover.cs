@@ -99,17 +99,17 @@ namespace MarsRovers
             List<string> pos = position.Split(' ').ToList();
             string tmp;
 
-            if ((tmp = pos.ElementAt(2)) == "W")
-            {
-                y = Int32.Parse(pos[0]);
-                y++;
-                pos[0] = y.ToString();
-            }
             if ((tmp = pos.ElementAt(2)) == "E")
             {
-                y = Int32.Parse(pos[0]);
+                y = Int32.Parse(pos[1]);
+                y++;
+                pos[1] = y.ToString();
+            }
+            if ((tmp = pos.ElementAt(2)) == "W")
+            {
+                y = Int32.Parse(pos[1]);
                 y--;
-                pos[0] = y.ToString();
+                pos[1] = y.ToString();
             }
 
             // Add white spaces

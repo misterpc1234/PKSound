@@ -112,5 +112,37 @@ namespace UnitTests
             // Assert
             Assert.AreEqual("1 3 S", rover.position);
         }
+
+        // Test that an advance east will increase y value by one
+        [TestMethod]
+        public void Rover_AdvanceEast_Y_Direction_Test()
+        {
+            // Arrange
+            Rover rover = new Rover();
+            string position = "2 3 E";
+
+            // Act  
+            rover.position = position;
+            rover.AdvanceY();
+
+            // Assert
+            Assert.AreEqual("2 4 E", rover.position);
+        }
+
+        // Test that an advance east will increase y value by one
+        [TestMethod]
+        public void Rover_AdvanceWest_Y_Direction_Test()
+        {
+            // Arrange
+            Rover rover = new Rover();
+            string position = "2 3 W";
+
+            // Act  
+            rover.position = position;
+            rover.AdvanceY();
+
+            // Assert
+            Assert.AreEqual("2 2 W", rover.position);
+        }
     }
 }
